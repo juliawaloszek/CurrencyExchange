@@ -23,7 +23,7 @@ namespace CurrencyExchange.Api.Controllers
         [HttpGet]
         public  async Task<IActionResult> Get()
         {
-            var users = await _context.User.ToListAsync();
+            var users = await _context.Users.ToListAsync();
             return Ok(users);
         }
 
@@ -31,7 +31,7 @@ namespace CurrencyExchange.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var user = await _context.User.FirstOrDefaultAsync(x => x.Id ==id);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id ==id);
             return Ok(user);
         }
 

@@ -8,6 +8,6 @@ namespace CurrencyExchange.Api.Data
         public CurrencyExchangeContext (DbContextOptions<CurrencyExchangeContext> options) : base (options) {}
 
         
-        public DbSet<User> User {get; set; }       
+        public DbSet<User> Users {get; set; }       
     }
 }
