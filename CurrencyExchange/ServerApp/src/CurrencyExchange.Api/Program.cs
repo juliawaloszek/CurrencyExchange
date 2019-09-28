@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace CurrencyExchange.API
+namespace CurrencyExchange.Api
 {
     public class Program
     {
