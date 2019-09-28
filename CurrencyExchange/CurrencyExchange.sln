@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{14E32E85
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyExchange.Api", "ServerApp\src\CurrencyExchange.Api\CurrencyExchange.Api.csproj", "{8F1B4D70-7CAD-4F69-8D99-A6CDF45F3E45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyExchange.Tests", "ServerApp\tests\CurrencyExchange.Tests\CurrencyExchange.Tests.csproj", "{B515831C-7D1E-4C85-B993-000CEDDB5CE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8F1B4D70-7CAD-4F69-8D99-A6CDF45F3E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F1B4D70-7CAD-4F69-8D99-A6CDF45F3E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F1B4D70-7CAD-4F69-8D99-A6CDF45F3E45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B515831C-7D1E-4C85-B993-000CEDDB5CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B515831C-7D1E-4C85-B993-000CEDDB5CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B515831C-7D1E-4C85-B993-000CEDDB5CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B515831C-7D1E-4C85-B993-000CEDDB5CE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -29,6 +35,7 @@ Global
 		{29452C71-F738-4086-A637-99376F98327A} = {9AB459D6-284C-4B48-80E6-ABB601D06391}
 		{14E32E85-2804-4FAB-9357-EB8474CB0308} = {9AB459D6-284C-4B48-80E6-ABB601D06391}
 		{8F1B4D70-7CAD-4F69-8D99-A6CDF45F3E45} = {29452C71-F738-4086-A637-99376F98327A}
+		{B515831C-7D1E-4C85-B993-000CEDDB5CE8} = {14E32E85-2804-4FAB-9357-EB8474CB0308}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69DA6B29-0F22-4683-994E-3F0B416DE827}

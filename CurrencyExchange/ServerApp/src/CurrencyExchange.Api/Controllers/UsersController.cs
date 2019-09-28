@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using CurrencyExchange.Api.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyExchange.Api.Controllers
 {
@@ -19,17 +21,17 @@ namespace CurrencyExchange.Api.Controllers
 
         // GET api/users
         [HttpGet]
-        public IActionResult GetUsers()
+        public  async Task<IActionResult> Get()
         {
-            var users = _context.User.ToList();
+            var users = await _context.User.ToListAsync();
             return Ok(users);
         }
 
         // GET api/users/5
         [HttpGet("{id}")]
-        public IActionResult GetUser(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var user = _context.User.FirstOrDefault(x => x.Id ==id);
+            var user = await _context.User.FirstOrDefaultAsync(x => x.Id ==id);
             return Ok(user);
         }
 
