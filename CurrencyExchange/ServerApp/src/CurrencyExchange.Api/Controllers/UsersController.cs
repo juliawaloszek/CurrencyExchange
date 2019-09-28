@@ -24,7 +24,7 @@ namespace CurrencyExchange.Api.Controllers
         public  async Task<IActionResult> Get()
         {
             var users = await _context.Users.ToListAsync();
-            return Ok(users);
+            return Ok(users + "babeczka");
         }
 
         // GET api/users/5
