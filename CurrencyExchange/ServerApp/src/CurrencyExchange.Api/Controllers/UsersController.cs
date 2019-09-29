@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CurrencyExchange.Api.Controllers
 {
     // [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -26,7 +27,7 @@ namespace CurrencyExchange.Api.Controllers
         public  async Task<IActionResult> Get()
         {
             var users = await _context.Users.ToListAsync();
-            return Ok(users + "babeczka");
+            return Ok(users);
         }
 
         // GET api/users/5
