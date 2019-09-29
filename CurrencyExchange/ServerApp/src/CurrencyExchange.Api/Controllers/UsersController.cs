@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyExchange.Api.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
