@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div *ngIf="!registerMode">
+    <div class="row">
+      <div class="col-5">
+        <h1 class="text-center">Online Money Exchange</h1>
+        <p class="text-center lead mt-5">
+          Exchange currency online. We operate quickly, safely and free of charge. Make transactions 24/7.
+        </p>
+        <div class="text-center  mt-5">
+          <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()" >Create a free account</button>
+          <button class="btn btn-info btn-lg">Learn more</button>
+        </div>
+      </div>
+      <div class="col-5 offset-1">
+          <h1>Kurs na żywo:</h1>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register></app-register>
+      </div>
+    </div>
+  </div>
+</div> 
