@@ -7,6 +7,7 @@ namespace CurrencyExchange.Api.Models
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public string Role { get; set; }
+        public Wallet Wallet { get; set; }
 
     }
 }

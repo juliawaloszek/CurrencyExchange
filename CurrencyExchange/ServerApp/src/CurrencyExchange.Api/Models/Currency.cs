@@ -8,5 +8,7 @@ namespace CurrencyExchange.Api.Models
         public float PurchasePrice { get; set; }
         public float SellPrice { get; set; }
         public float AveragePrice { get; set; }
+        public Wallet Wallet { get; set; }
+        public int WalletId { get; set; }
     }
 }
