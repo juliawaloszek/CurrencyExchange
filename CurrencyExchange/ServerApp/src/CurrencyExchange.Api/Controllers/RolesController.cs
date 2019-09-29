@@ -21,11 +21,13 @@ namespace CurrencyExchange.Api.Controllers
         {
             Type t = typeof(Role);
             FieldInfo[] fields = t.GetFields(BindingFlags.Static | BindingFlags.Public);
-            var roles = new List<KeyValuePair<string, string>>();
+            // var roles = new List<KeyValuePair<string, string>>();
+            var roles = new List<string>();
 
             foreach (FieldInfo fi in fields)
             {
-                roles.Add(new KeyValuePair<string, string>(fi.Name, fi.GetValue(null).ToString()));
+                // roles.Add(new KeyValuePair<string, string>(fi.Name, fi.GetValue(null).ToString()));
+                roles.Add(fi.GetValue(null).ToString());
             }
             return Ok(roles);
         }

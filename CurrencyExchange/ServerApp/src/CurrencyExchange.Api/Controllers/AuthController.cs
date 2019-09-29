@@ -26,20 +26,21 @@ namespace CurrencyExchange.Api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register (UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register (UserForAuthenticateDto UserForAuthenticateDto)
         {
-            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+            UserForAuthenticateDto.Username = UserForAuthenticateDto.Username.ToLower();
+            // UserForAuthenticateDto.Role = UserForAuthenticateDto.Role.ToLower();
 
-            if (await _repo.UserExists(userForRegisterDto.Username))
+            if (await _repo.UserExists(UserForAuthenticateDto.Username))
                 return BadRequest("Username already exist");
 
             var userToCreate = new User
             {
-                Username = userForRegisterDto.Username,
-                Role = Role.User
+                Username = UserForAuthenticateDto.Username,
+                Role = UserForAuthenticateDto.Role
             };
 
-            var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
+            var createdUser = await _repo.Register(userToCreate, UserForAuthenticateDto.Password);
 
             // return CreatedAtRoute()
             return StatusCode(201);
