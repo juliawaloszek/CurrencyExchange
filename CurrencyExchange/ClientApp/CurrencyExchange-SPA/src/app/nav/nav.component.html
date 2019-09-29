@@ -1,8 +1,19 @@
   
 <nav class="navbar navbar-light bg-light rounded d-flex justify-content-between">
-  <a class="navbar-brand" href="#">Exchange</a>
+  <a class="navbar-brand" [routerLink]="['/home']" >Exchange</a>
+
+    
+  <div *ngIf="loggedIn()" class="mr-auto row">
+      <div class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/my-wallet']"  >My Wallet</a>
+      </div>
+      <div class="nav-item" routerLinkActive="active">
+        <a class="nav-link"[routerLink]="['/currencies']">Currencies</a>
+      </div>
+  </div>
+  
     <div *ngIf="loggedIn()">
-        <a class="mr-2">
+       <a class="mr-2">
           Logged in as {{authService.decodedToken?.unique_name | titlecase}}
         </a>
         <button class="btn btn-success my-2 my-sm-0 mr-2"  title="Edit Profile"> <i class="fa fa-cog"></i> </button>
