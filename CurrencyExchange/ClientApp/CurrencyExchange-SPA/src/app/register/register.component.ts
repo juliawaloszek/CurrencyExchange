@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -8,15 +9,17 @@ import { AuthService } from '../_services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  @Input() rolesFromHome: any;
   systemPassword: any;
   readonly mainPassword = 'test';
   model: any = {};
   isAdmin = false;
+  roles: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private http: HttpClient) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getRoles();
+  }
 
   register() {
     this.authService.register(this.model).subscribe( () => {
@@ -38,5 +41,14 @@ export class RegisterComponent implements OnInit {
 
   checkMainPassword() {
 
+  }
+
+  getRoles() {
+    this.http.get('http://localhost:5003/api/roles').subscribe(response => {
+      this.roles = response;
+      console.log(this.roles);
+    }, error => {
+      console.log(error);
+    });
   }
 }

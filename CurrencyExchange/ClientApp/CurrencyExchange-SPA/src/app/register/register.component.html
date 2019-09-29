@@ -9,7 +9,7 @@
     <div class="form-group">
         <label for="systemRole">What is your role in system?</label>
         <select  [(ngModel)]="model.role"  name="role"  (ngModelChange)="onChange($event)" class="form-control pr-1" id="systemRole">
-          <option *ngFor="let role of rolesFromHome"  [ngValue]="role">{{role}}</option>
+          <option *ngFor="let role of roles"  [ngValue]="role">{{role}}</option>
         </select>
     </div>
 
