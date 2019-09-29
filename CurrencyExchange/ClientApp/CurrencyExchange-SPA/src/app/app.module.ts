@@ -12,6 +12,8 @@ import { NavComponent } from './nav/nav.component';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { CurrenciesComponent } from './currencies/currencies.component';
+import { MyWalletComponent } from './my-wallet/my-wallet.component';
 
 
 
@@ -22,7 +24,9 @@ import { RegisterComponent } from './register/register.component';
       UserComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      CurrenciesComponent,
+      MyWalletComponent
    ],
    imports: [
       NgbModule,
