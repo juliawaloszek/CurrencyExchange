@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CurrencyExchange.Api.Models;
 
@@ -7,6 +8,6 @@ namespace CurrencyExchange.Api.Repositories
     {
         Task <User> Register(User user, string password);
         Task <User> Login(string username, string password);
-        Task <bool> UserExists(string username);       
+        Task <bool> UserExists(string username);     
     }
 }

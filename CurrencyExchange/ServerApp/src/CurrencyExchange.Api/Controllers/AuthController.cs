@@ -35,7 +35,8 @@ namespace CurrencyExchange.Api.Controllers
 
             var userToCreate = new User
             {
-                Username = userForRegisterDto.Username
+                Username = userForRegisterDto.Username,
+                Role = Role.User
             };
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
@@ -55,7 +56,8 @@ namespace CurrencyExchange.Api.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
+                new Claim(ClaimTypes.Name, userFromRepo.Username),
+                new Claim(ClaimTypes.Role, userFromRepo.Role)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8

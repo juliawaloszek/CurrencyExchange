@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CurrencyExchange.Api.Data;
+using CurrencyExchange.Api.Dtos;
 using CurrencyExchange.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,12 @@ namespace CurrencyExchange.Api.Repositories
     public class AuthRepository : IAuthRepository
     {
         private readonly CurrencyExchangeContext _context;
+
+        private List<UserForAuthenticateDto> _users = new List<UserForAuthenticateDto>
+        { 
+            new UserForAuthenticateDto { Username = "admin", Password = "admin", Role = Role.Admin },
+            new UserForAuthenticateDto { Username = "user", Password = "user", Role = Role.User } 
+        };
         public AuthRepository(CurrencyExchangeContext context)
         {
             _context = context;
