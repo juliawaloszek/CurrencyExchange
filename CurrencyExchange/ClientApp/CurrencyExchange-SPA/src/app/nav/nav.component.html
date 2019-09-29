@@ -11,7 +11,7 @@
 
     <div *ngIf="loggedIn()">
         <a class="mr-2">
-          Logged in as User
+          Logged in as {{authService.decodedToken?.unique_name | titlecase}}
         </a>
         <button class="btn btn-success my-2 my-sm-0 mr-2"  title="Edit Profile"> <i class="fa fa-cog"></i> </button>
         <button class="btn btn-success my-2 my-sm-0 mr-2"  title="Logout"> <i class="fa fa-power-off"></i> </button>
