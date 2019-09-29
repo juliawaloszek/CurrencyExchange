@@ -1,6 +1,6 @@
 namespace CurrencyExchange.Api.Models
 {
-    public class Currency
+    public class Currency : Base 
     {
         public string Name { get; set; }
         public string Code { get; set; }

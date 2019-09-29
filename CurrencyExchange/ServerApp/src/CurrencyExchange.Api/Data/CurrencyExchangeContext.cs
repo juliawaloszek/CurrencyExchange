@@ -9,5 +9,7 @@ namespace CurrencyExchange.Api.Data
 
         
         public DbSet<User> Users {get; set; }       
+        public DbSet<Currency> Currencies {get; set; }       
+        public DbSet<Wallet> Wallets {get; set; }       
     }
 }
