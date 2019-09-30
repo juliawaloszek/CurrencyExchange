@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CurrenciesService } from 'src/app/_services/currencies.service';
 import { Currency } from 'src/app/_models/currency';
+import { AuthService } from 'src/app/_services/auth.service';
 
 const DEFAULT_DATA: Currency[] = [
   {name: 'US Dollar', code: 'USD', unit: 1, purchasePrice: 	3.7473, sellPrice: 	3.7563, averagePrice: 3.7518},
@@ -18,14 +19,15 @@ const DEFAULT_DATA: Currency[] = [
 })
 export class CurrenciesComponent implements OnInit {
 
-  displayedColumns: string[] = ['code', 'unit', 'purchasePrice' ];
+  displayedColumns: string[] = ['code', 'unit', 'purchasePrice', 'actions' ];
   rawData: any;
   publicationDate: any;
   currencies: Currency[] = DEFAULT_DATA;
   dataSource = this.currencies;
 
   constructor( private currenciesService: CurrenciesService,
-               private changeDetectorRefs: ChangeDetectorRef ) { }
+               private changeDetectorRefs: ChangeDetectorRef,
+               private authService: AuthService ) { }
 
   ngOnInit() {
     this.loadCurrencies();
@@ -42,7 +44,6 @@ export class CurrenciesComponent implements OnInit {
     });
   }
 
-
   refresh() {
     this.currenciesService.getCurrencies().subscribe(res => {
        this.dataSource = res.items;
@@ -50,6 +51,8 @@ export class CurrenciesComponent implements OnInit {
     this.changeDetectorRefs.detectChanges();
    }
 
-
+   loggedIn() {
+    return this.authService.loggedIn();
+  }
 
 }
