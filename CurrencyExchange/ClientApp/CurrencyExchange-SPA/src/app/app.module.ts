@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { CurrenciesComponent } from './main/currencies/currencies.component';
 import { MyWalletComponent } from './main/my-wallet/my-wallet.component';
 import { MainComponent } from './main/main.component';
+import { CurrenciesService } from './_services/currencies.service';
 
 
 
@@ -36,10 +39,12 @@ import { MainComponent } from './main/main.component';
       AppRoutingModule,
       HttpClientModule,
       BrowserAnimationsModule,
-      FormsModule
+      FormsModule,
+      MatTableModule
    ],
    providers: [
-      AuthService
+      AuthService,
+      CurrenciesService
    ],
    bootstrap: [
       AppComponent

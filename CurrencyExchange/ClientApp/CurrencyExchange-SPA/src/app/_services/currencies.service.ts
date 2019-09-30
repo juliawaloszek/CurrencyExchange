@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Currency } from '../_models/currency';
+import { Wallet } from '../_models/wallet';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +14,8 @@ proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
 constructor(private http: HttpClient) { }
 
-getCurrencies() {
-  this.http.get(this.proxyurl + this.baseUrl)
-    .subscribe((res) => {
-    console.log(res);
-  });
+getCurrencies(): Observable<Currency[]> {
+  return this.http.get<Currency[]>(this.proxyurl + this.baseUrl);
 }
 
 }
