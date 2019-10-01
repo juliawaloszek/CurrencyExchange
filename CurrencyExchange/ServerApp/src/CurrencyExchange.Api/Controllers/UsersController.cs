@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyExchange.Api.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
