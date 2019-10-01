@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CurrencyExchange.Api.Migrations
 {
     [DbContext(typeof(CurrencyExchangeContext))]
-    [Migration("20190929193149_ExpandDatabase")]
-    partial class ExpandDatabase
+    [Migration("20191001132827_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,11 +35,11 @@ namespace CurrencyExchange.Api.Migrations
 
                     b.Property<int>("Unit");
 
-                    b.Property<int>("WalletId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("WalletId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Currencies");
                 });
@@ -62,34 +62,11 @@ namespace CurrencyExchange.Api.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CurrencyExchange.Api.Models.Wallet", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Wallets");
-                });
-
             modelBuilder.Entity("CurrencyExchange.Api.Models.Currency", b =>
                 {
-                    b.HasOne("CurrencyExchange.Api.Models.Wallet", "Wallet")
-                        .WithMany("Currencies")
-                        .HasForeignKey("WalletId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CurrencyExchange.Api.Models.Wallet", b =>
-                {
                     b.HasOne("CurrencyExchange.Api.Models.User", "User")
-                        .WithOne("Wallet")
-                        .HasForeignKey("CurrencyExchange.Api.Models.Wallet", "UserId")
+                        .WithMany("Currencies")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

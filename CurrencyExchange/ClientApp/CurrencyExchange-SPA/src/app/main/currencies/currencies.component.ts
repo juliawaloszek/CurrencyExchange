@@ -32,7 +32,6 @@ export class CurrenciesComponent implements OnInit {
   ngOnInit() {
     this.loadCurrencies();
     this.refresh();
-
   }
 
   loadCurrencies() {
