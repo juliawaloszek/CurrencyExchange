@@ -32,7 +32,11 @@ namespace CurrencyExchange.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CurrencyExchangeContext> (x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnecion")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(opt => {
+                    opt.SerializerSettings.ReferenceLoopHandling = 
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<ICurrencyExchangeRepository, CurrencyExchangeRepository>();

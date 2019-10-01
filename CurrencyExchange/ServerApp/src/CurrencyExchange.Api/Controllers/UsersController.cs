@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CurrencyExchange.Api.Data;
+using CurrencyExchange.Api.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,16 +10,17 @@ using Microsoft.EntityFrameworkCore;
 namespace CurrencyExchange.Api.Controllers
 {
     [Authorize]
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly CurrencyExchangeContext _context;
+        private readonly CurrencyExchangeRepository _repo;
 
-        public UsersController(CurrencyExchangeContext context)
+        public UsersController(CurrencyExchangeContext context, CurrencyExchangeRepository repo)
         {
             _context = context;
+            _repo = repo;
         }
 
 
@@ -26,7 +28,7 @@ namespace CurrencyExchange.Api.Controllers
         [HttpGet]
         public  async Task<IActionResult> Get()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _repo.GetUsers();
             return Ok(users);
         }
 
@@ -34,7 +36,7 @@ namespace CurrencyExchange.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id ==id);
+            var user = await _repo.GetUser(id);
             return Ok(user);
         }
 
