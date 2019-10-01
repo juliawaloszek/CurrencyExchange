@@ -26,10 +26,9 @@ namespace CurrencyExchange.Api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register (UserForAuthenticateDto UserForAuthenticateDto)
+        public async Task<IActionResult> Register (UserForRegisterDto UserForAuthenticateDto)
         {
             UserForAuthenticateDto.Username = UserForAuthenticateDto.Username.ToLower();
-            // UserForAuthenticateDto.Role = UserForAuthenticateDto.Role.ToLower();
 
             if (await _repo.UserExists(UserForAuthenticateDto.Username))
                 return BadRequest("Username already exist");
@@ -37,7 +36,7 @@ namespace CurrencyExchange.Api.Controllers
             var userToCreate = new User
             {
                 Username = UserForAuthenticateDto.Username,
-                Role = UserForAuthenticateDto.Role
+                // Role = UserForAuthenticateDto.Role
             };
 
             var createdUser = await _repo.Register(userToCreate, UserForAuthenticateDto.Password);
@@ -58,7 +57,7 @@ namespace CurrencyExchange.Api.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username),
-                new Claim(ClaimTypes.Role, userFromRepo.Role)
+                // new Claim(ClaimTypes.Role, userFromRepo.Role)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8

@@ -16,17 +16,15 @@ namespace CurrencyExchange.Api.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly CurrencyExchangeContext _context;
-        private readonly CurrencyExchangeRepository _repo;
+        private readonly ICurrencyExchangeRepository _repo;
         private readonly IMapper _mapper;
 
-        public UsersController(CurrencyExchangeContext context, 
-                               CurrencyExchangeRepository repo, 
-                               IMapper mapper)
+        // public UsersController(CurrencyExchangeContext context, 
+        //                        CurrencyExchangeRepository repo, 
+        //                        IMapper mapper)
+        public UsersController(ICurrencyExchangeRepository repo)
         {
-            _context = context;
             _repo = repo;
-            _mapper = mapper;
         }
 
 
@@ -34,11 +32,11 @@ namespace CurrencyExchange.Api.Controllers
         [HttpGet]
         public  async Task<IActionResult> Get()
         {
-            // var users = await _repo.GetUsers();
-            // return Ok(users);
             var users = await _repo.GetUsers();
-            var usersToReturn = _mapper.Map<IEnumerable <UserForListDto>>(users);
-            return Ok(usersToReturn);
+            return Ok(users);
+            // var users = await _repo.GetUsers();
+            // var usersToReturn = _mapper.Map<IEnumerable <UserForListDto>>(users);
+            // return Ok(usersToReturn);
         }
 
         // GET api/users/5
