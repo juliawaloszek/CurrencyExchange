@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CurrencyExchange.Api.Data;
+using CurrencyExchange.Api.Dtos;
 using CurrencyExchange.Api.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +18,15 @@ namespace CurrencyExchange.Api.Controllers
     {
         private readonly CurrencyExchangeContext _context;
         private readonly CurrencyExchangeRepository _repo;
+        private readonly IMapper _mapper;
 
-        public UsersController(CurrencyExchangeContext context, CurrencyExchangeRepository repo)
+        public UsersController(CurrencyExchangeContext context, 
+                               CurrencyExchangeRepository repo, 
+                               IMapper mapper)
         {
             _context = context;
             _repo = repo;
+            _mapper = mapper;
         }
 
 
@@ -28,8 +34,11 @@ namespace CurrencyExchange.Api.Controllers
         [HttpGet]
         public  async Task<IActionResult> Get()
         {
+            // var users = await _repo.GetUsers();
+            // return Ok(users);
             var users = await _repo.GetUsers();
-            return Ok(users);
+            var usersToReturn = _mapper.Map<IEnumerable <UserForListDto>>(users);
+            return Ok(usersToReturn);
         }
 
         // GET api/users/5
