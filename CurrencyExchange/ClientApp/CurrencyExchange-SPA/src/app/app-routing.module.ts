@@ -8,11 +8,18 @@ import { AuthGuard } from './_guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
-  { path: 'currencies', component: CurrenciesComponent},
-  { path: 'my-wallet', component: MyWalletComponent},
-  { path: 'main', component: MainComponent, canActivate: [AuthGuard]},
-  { path: '**', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', component: HomeComponent},
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+        { path: 'currencies', component: CurrenciesComponent},
+        { path: 'my-wallet', component: MyWalletComponent},
+        { path: 'main', component: MainComponent, canActivate: [AuthGuard]},
+    ]
+},
+   { path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 
 @NgModule({
