@@ -18,6 +18,7 @@ import { CurrenciesComponent } from './main/currencies/currencies.component';
 import { MyWalletComponent } from './main/my-wallet/my-wallet.component';
 import { MainComponent } from './main/main.component';
 import { CurrenciesService } from './_services/currencies.service';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 
@@ -44,7 +45,8 @@ import { CurrenciesService } from './_services/currencies.service';
    ],
    providers: [
       AuthService,
-      CurrenciesService
+      CurrenciesService,
+      AuthGuard
    ],
    bootstrap: [
       AppComponent

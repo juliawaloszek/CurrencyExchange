@@ -4,13 +4,14 @@ import { HomeComponent } from './home/home.component';
 import { CurrenciesComponent } from './main/currencies/currencies.component';
 import { MyWalletComponent } from './main/my-wallet/my-wallet.component';
 import { MainComponent } from './main/main.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'currencies', component: CurrenciesComponent},
   { path: 'my-wallet', component: MyWalletComponent},
-  { path: 'main', component: MainComponent},
+  { path: 'main', component: MainComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
 
