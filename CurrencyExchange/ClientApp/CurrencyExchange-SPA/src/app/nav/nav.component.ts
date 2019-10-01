@@ -23,7 +23,7 @@ export class NavComponent implements OnInit {
       }, error => {
         console.log('Failed to login');
       }, () => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/main']);
       }
     );
   }

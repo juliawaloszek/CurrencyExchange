@@ -1,19 +1,6 @@
   
 <nav class="navbar navbar-light bg-light rounded d-flex justify-content-between">
   <a class="navbar-brand" [routerLink]="['/home']" >Exchange</a>
-
-    
-  <div *ngIf="loggedIn()" class="mr-auto row">
-      <div class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/my-wallet']"  >My Wallet</a>
-      </div>
-      <div class="nav-item" routerLinkActive="active">
-        <a class="nav-link"[routerLink]="['/currencies']">Currencies</a>
-      </div>
-      <div class="nav-item" routerLinkActive="active">
-          <a class="nav-link"[routerLink]="['/main']">Main</a>
-      </div>
-  </div>
   
     <div *ngIf="loggedIn()">
        <a class="mr-2">
